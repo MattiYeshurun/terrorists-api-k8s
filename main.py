@@ -1,7 +1,6 @@
 import csv
 import io
 from fastapi import FastAPI, File, HTTPException, UploadFile
-import multipart
 import uvicorn
 
 app = FastAPI()
@@ -13,7 +12,10 @@ def upload_csv(file: UploadFile = File(...)):
 
     content = file.file.read()
 
-    decoded = content.decode("utf-8")
+    try:
+        decoded = content.decode("utf-8")
+    except UnicodeDecodeError:
+        raise HTTPException(status_code=400, detail="not decode")
 
     reader = csv.reader(io.StringIO(decoded))
     rows = [row for row in reader]
