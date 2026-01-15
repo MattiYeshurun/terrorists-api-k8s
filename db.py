@@ -49,40 +49,40 @@ class DataTerrorists:
     print(my_data)
 
 
-# Replace '<connection-string>' with your actual MongoDB connection string
-connection_string = "mongodb://localhost:27017/"
+# # Replace '<connection-string>' with your actual MongoDB connection string
+# connection_string = "mongodb://localhost:27017/"
 
-# Connect to MongoDB
-try:
-   client = MongoClient(connection_string)
-   print("Successfully connected to MongoDB.")
-except errors.ConnectionError as e:
-   print("Failed to connect to MongoDB:", e)
-   exit()
+# # Connect to MongoDB
+# try:
+#    client = MongoClient(connection_string)
+#    print("Successfully connected to MongoDB.")
+# except errors.ConnectionError as e:
+#    print("Failed to connect to MongoDB:", e)
+#    exit()
 
-# Access the database and collection
-database = client["threat_db"]
-collection = database["top_threats"]
+# # Access the database and collection
+# database = client["threat_db"]
+# collection = database["top_threats"]
 
-# Insert a document into the collection
-try:
-   result = collection.insert_one({"title": "Back to the Future"})
-   print(f"Document inserted with _id: {result.inserted_id}")
-except Exception as e:
-   print("Failed to insert document:", e)
+# # Insert a document into the collection
+# try:
+#    result = collection.insert_one({"title": "Back to the Future"})
+#    print(f"Document inserted with _id: {result.inserted_id}")
+# except Exception as e:
+#    print("Failed to insert document:", e)
 
-# List search indexes for the collection (ensure method exists)
-try:
-   cursor = collection.list_search_indexes()
-   indexes = list(cursor)  # Convert cursor to list for ease
-   if indexes:
-      print("Search indexes found:")
-      for index in indexes:
-            print(index)
-   else:
-      print("No search indexes found.")
-except Exception as e:
-   print("Failed to list search indexes:", e)
+# # List search indexes for the collection (ensure method exists)
+# try:
+#    cursor = collection.list_search_indexes()
+#    indexes = list(cursor)  # Convert cursor to list for ease
+#    if indexes:
+#       print("Search indexes found:")
+#       for index in indexes:
+#             print(index)
+#    else:
+#       print("No search indexes found.")
+# except Exception as e:
+#    print("Failed to list search indexes:", e)
 
-# Close the client connection (Optionally used here for resource management)
-client.close()
+# # Close the client connection (Optionally used here for resource management)
+# client.close()
