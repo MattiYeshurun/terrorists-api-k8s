@@ -1,0 +1,6 @@
+#build image to docker hub
+
+docker build -t mattiyeshurun/threat-api:v1 .
+
+#push to docker hub
+docker push mattiyeshurun/threat-api:v1
